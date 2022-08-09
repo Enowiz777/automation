@@ -18,7 +18,7 @@ def pdf2txt(inPDFfile, outTXTFile):
     with open(outTXTFile, 'w') as f: 
          f.write(txt)
    
-inPDFfile = "./PDF files/test.pdf" # your file path
+inPDFfile = "./pdf/2.pdf" # your file path
 outTXTFile = "sample.txt" # what ever the name you want enjoy!
 pdf2txt(inPDFfile, outTXTFile)
  
