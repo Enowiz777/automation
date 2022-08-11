@@ -9,6 +9,10 @@ def merge_pdfs(paths, output):
         pdf_reader = PdfFileReader(item['path'])
         start = item['start']-1 # To match the starting index
         end = item['end'] # range() function will take care of the ending index.
+        max_pages = pdf_reader.getNumPages()
+        if start < 0 or end > max_pages:
+            print("You are out of range!")
+            # Need to raise an error.
         for page in range(start, end):
             # Add each page to the writer object
             pdf_writer.addPage(pdf_reader.getPage(page))
