@@ -1,5 +1,7 @@
 # pdf_merging.py
 
+# Create a program that takes two ranges
+
 from PyPDF2 import PdfFileReader, PdfFileWriter
 
 def merge_pdfs(paths, output):
@@ -11,7 +13,7 @@ def merge_pdfs(paths, output):
         end = item['end'] # range() function will take care of the ending index.
         max_pages = pdf_reader.getNumPages()
         if start < 0 or end > max_pages:
-            print("You are out of range!")
+            raise Exception("You are out of range!")
             # Need to raise an error.
         for page in range(start, end):
             # Add each page to the writer object
@@ -27,6 +29,8 @@ if __name__ == '__main__':
     first_pdf_range = input("Please enter the page range: (ex: 1-5)")
     second_pdf_range = input("Please enter the page range:(ex: 1-5)")
     
+    # Input checker needed.
+
     # Split the first range
     first_text = first_pdf_range.split("-")
     first_range_start = int(first_text[0])
@@ -37,6 +41,7 @@ if __name__ == '__main__':
     second_range_start = int(second_text[0])
     second_range_end = int(second_text[1])
 
+    # Path receiver UI needed.
     items = [
         {
             "path": './pdf/1.pdf',

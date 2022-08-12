@@ -8,16 +8,23 @@ import os
 win = Tk()
 
 # Set the geometry of tkinter frame
-win.geometry("700x350")
+win.geometry("1050x700")
+
+# Path list
+path_list = []
 
 def open_file():
    file = filedialog.askopenfile(mode='r', filetypes=[('Python Files', '*.py')])
    if file:
       filepath = os.path.abspath(file.name)
-      Label(win, text="The File is located at : " + str(filepath), font=('Aerial 11')).pack()
+      path_list.append(filepath)
+      Label(win, text="The PDF File is located at : " + str(filepath), font=('Aerial 11')).pack(side="top", pady=10)
+      Label(win, text="Page Range:").pack(side="top")
+      Entry(win).pack(side="top")
+
 
 # Add a Label widget
-label = Label(win, text="Click the Button to browse the Files", font=('Georgia 13'))
+label = Label(win, text="Please Add path of PDF files", font=('Georgia 13'))
 label.pack(pady=10)
 
 # Create a Button
