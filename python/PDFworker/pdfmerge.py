@@ -12,6 +12,7 @@ def merge_pdfs(paths, output):
         start = item['start']-1 # To match the starting index
         end = item['end'] # range() function will take care of the ending index.
         max_pages = pdf_reader.getNumPages()
+        # Validate the range.
         if start < 0 or end > max_pages:
             raise Exception("You are out of range!")
             # Need to raise an error.

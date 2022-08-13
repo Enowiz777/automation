@@ -1,3 +1,17 @@
+
+# ex 1:
+"""
+from Tkinter import *
+
+top = Tk()
+L1 = Label(top, text="User Name")
+L1.pack( side = LEFT)
+E1 = Entry(top, bd =5)
+E1.pack(side = RIGHT)
+
+top.mainloop()
+"""
+# ex 2:
 import tkinter as tk
 
 def show_entry_fields():
