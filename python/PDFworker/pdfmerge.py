@@ -1,24 +1,23 @@
 # pdf_merging.py
 
 # Create a program that takes two ranges
-
 from PyPDF2 import PdfFileReader, PdfFileWriter
+from page_input_to_numbers import convert_to_num_list
 
-def merge_pdfs(paths, output):
+def merge_pdfs(nums, path, output):
     pdf_writer = PdfFileWriter()
 
-    for item in items:
-        pdf_reader = PdfFileReader(item['path'])
-        start = item['start']-1 # To match the starting index
-        end = item['end'] # range() function will take care of the ending index.
+    for num in nums:
+        pdf_reader = PdfFileReader(path)
+
         max_pages = pdf_reader.getNumPages()
         # Validate the range.
-        if start < 0 or end > max_pages:
+        if num < 0 or num > max_pages:
             raise Exception("You are out of range!")
-            # Need to raise an error.
-        for page in range(start, end):
-            # Add each page to the writer object
-            pdf_writer.addPage(pdf_reader.getPage(page))
+        # Need to raise an error.
+        
+        # Add each page to the writer object
+        pdf_writer.addPage(pdf_reader.getPage(num))
 
     # Write out the merged PDF
     with open(output, 'wb') as out:
@@ -27,34 +26,7 @@ def merge_pdfs(paths, output):
 if __name__ == '__main__':
     
     # Receive range
-    first_pdf_range = input("Please enter the page range: (ex: 1-5)")
-    second_pdf_range = input("Please enter the page range:(ex: 1-5)")
-    
-    # Input checker needed.
-
-    # Split the first range
-    first_text = first_pdf_range.split("-")
-    first_range_start = int(first_text[0])
-    first_range_end = int(first_text[1])
-
-    # Split the second range
-    second_text = second_pdf_range.split("-")
-    second_range_start = int(second_text[0])
-    second_range_end = int(second_text[1])
-
-    # Path receiver UI needed.
-    items = [
-        {
-            "path": './pdf/1.pdf',
-            "start": first_range_start,
-            "end": first_range_end
-        }, 
-        {   "path": './pdf/2.pdf',
-            "start": second_range_start,
-            "end": second_range_end
-        }
-    ]
-
-
-    paths = ['./pdf/1.pdf','./pdf/2.pdf']
-    merge_pdfs(items, output='merged.pdf')
+    path = './pdf/1.pdf'
+    pdf_range = input("Please enter the page range: (ex: 1-5)")
+    nums = convert_to_num_list(pdf_range)
+    merge_pdfs(nums,path, output='merged.pdf')

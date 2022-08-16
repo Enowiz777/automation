@@ -1,3 +1,4 @@
+# DEV
 20220808
 
 - Discovered that I can merge pdfs using the python library called pyPDF2
@@ -16,4 +17,16 @@ https://realpython.com/pdf-python/
 Output option:
 - I can create a executable file. 
 - I can make it into a web app using flask. 
+
+
+# 1. Build function without UI
+
+20220815-TASKS
+
+1. Make a input that takes pages that user want (ex: 1-3; 5)
+2. Make sure you are getting all those pages inside the number list. 
+3. Pass on the list to the function
+
+Result:
+- Successfully created page_input_to_numbers.py that converts user input into the list of page numbers. 
 
