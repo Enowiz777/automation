@@ -30,3 +30,10 @@ Output option:
 Result:
 - Successfully created page_input_to_numbers.py that converts user input into the list of page numbers. 
 
+# 2. Create UI that takes in path and range
+
+1. Create a file path input and range input
+2. Make sure you get the input and save it under the variables.
+3. Once test with one is successful, allow users to create multiple inputs.
+4. Make it into a function so that it may be imported in main.py
+
