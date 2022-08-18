@@ -1,4 +1,3 @@
-
 def convert_to_num_list(input):
     final_list = []
     pdf_range = input

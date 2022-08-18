@@ -37,3 +37,13 @@ Result:
 3. Once test with one is successful, allow users to create multiple inputs.
 4. Make it into a function so that it may be imported in main.py
 
+20220818-TASKS
+
+# 3. Connect UI with the script
+
+1. 
+
+
+
+# 4. Make it to executable file. 
+
