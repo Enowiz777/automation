@@ -9,6 +9,10 @@ from tkinter.filedialog import askopenfile
 from page_input_to_numbers import convert_to_num_list
 from pdfmerge import merge_pdfs
 
+# Import for PDFreader
+from PyPDF2 import PdfFileReader, PdfFileWriter
+
+
 main_window = Tk()
 # Set the Title
 main_window.title("PDFworker by Enoch Park")
@@ -35,7 +39,12 @@ def open_file():
     # Extract the absolute path of the file.
     if file:
         # Get absolute filepath; Add to dict
-        filepath = os.path.abspath(file.name)   
+        filepath = os.path.abspath(file.name)
+
+        # Read the PDF and get the maximum number of page.   
+        pdf_reader = PdfFileReader(filepath)
+        max_pages = pdf_reader.getNumPages()
+
         dict["path"]= filepath
 
         # Get the file name
@@ -47,7 +56,7 @@ def open_file():
         Label(main_window, text="File Selected: " + str(filename)).grid(row=ROW, columnspan=3, padx=0)
 
         ROW+=1
-        Label(main_window, text="Page Range:").grid(row=ROW, column=0, padx=0)
+        Label(main_window, text=f"Enter pages: (Page Range: 1-{max_pages})").grid(row=ROW, column=0, padx=0)
         user_input = Entry(main_window)
         
         # Get input; Add to dict
@@ -68,7 +77,6 @@ def merge_file():
         pages = convert_to_num_list(item["input"])
         item["pages"]= pages
 
-    print(user_input_list)
     merge_pdfs(user_input_list, output_path)
 
 
