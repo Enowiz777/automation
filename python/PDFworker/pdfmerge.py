@@ -19,12 +19,13 @@ def merge_pdfs(list_of_dict, output):
             if page < 0 or page > max_pages:
                 raise Exception("You are out of range!")
             else:
-                pdf_writer.addPage(pdf_reader.getPage(page))
+                print(page-1)
+                pdf_writer.addPage(pdf_reader.getPage(page-1))
 
     # Write out the merged PDF.
+    output = output + "/1.pdf"
     with open(output, 'wb') as out:
-        
-        pdf_writer.write(out)
+        pdf_writer.write(output)
 
 # if __name__ == '__main__':
     
